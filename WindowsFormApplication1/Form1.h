@@ -1,4 +1,5 @@
 #pragma once
+#include "Form2.h"
 
 namespace WindowsFormApplication1 {
 
@@ -21,6 +22,7 @@ namespace WindowsFormApplication1 {
 			//
 			//TODO: Add the constructor code here
 			//
+
 		}
 
 	protected:
@@ -44,7 +46,7 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::Label^  labeltitle;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Button^  button2;
-	private: System::Windows::Forms::MaskedTextBox^  maskedTextBox1;
+
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::Button^  button3;
@@ -55,6 +57,7 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::RadioButton^  radioButton3;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::TextBox^  textBox3;
 
 
 
@@ -93,7 +96,6 @@ namespace WindowsFormApplication1 {
 			this->labeltitle = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->maskedTextBox1 = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -104,6 +106,7 @@ namespace WindowsFormApplication1 {
 			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -169,14 +172,6 @@ namespace WindowsFormApplication1 {
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
 			// 
-			// maskedTextBox1
-			// 
-			this->maskedTextBox1->Location = System::Drawing::Point(97, 168);
-			this->maskedTextBox1->Mask = L"000";
-			this->maskedTextBox1->Name = L"maskedTextBox1";
-			this->maskedTextBox1->Size = System::Drawing::Size(25, 20);
-			this->maskedTextBox1->TabIndex = 7;
-			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
@@ -211,6 +206,7 @@ namespace WindowsFormApplication1 {
 			this->button4->TabIndex = 11;
 			this->button4->Text = L"Odpowiedz";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
 			// 
 			// label4
 			// 
@@ -275,11 +271,19 @@ namespace WindowsFormApplication1 {
 			this->label5->TabIndex = 17;
 			this->label5->Text = L"label5";
 			// 
+			// textBox3
+			// 
+			this->textBox3->Location = System::Drawing::Point(13, 168);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(196, 20);
+			this->textBox3->TabIndex = 18;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(463, 334);
+			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label4);
@@ -287,7 +291,6 @@ namespace WindowsFormApplication1 {
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->maskedTextBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->labeltitle);
@@ -311,16 +314,78 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			 if (textBox1->Text->IsNullOrWhiteSpace(textBox1->Text)){
 				 label5->Text = "Nic nie wpisales";
 			 }
+			 else{
+				 if (textBox1->Text == "Warszawa" || textBox1->Text == "warszawa"){
+					 System::String^ pom2 = textBox1->Text + ". Jest to dobra odpowiedz";
+					 Form2^ frm;
+					 frm = gcnew Form2(pom2);
+					 frm->ShowDialog();
+				 }
+				 else{
+					 System::String^ pom2 = textBox1->Text + ". Jest to zla odpowiedz";
+					 Form2^ frm;
+					 frm = gcnew Form2(pom2);
+					 frm->ShowDialog();
+				 }
+			 }
 }
 
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 if (maskedTextBox1->Text->IsNullOrWhiteSpace(maskedTextBox1->Text)){
+			 if (textBox3->Text->IsNullOrWhiteSpace(textBox3->Text)){
 				 label5->Text = "Nie podales zadnej cyfry";
+			 }
+			 else{
+				 System::Int16 numer = System::Int16::Parse(textBox3->Text);
+				 if (numer == 966){
+					 System::String^ pom2 = textBox3->Text + ". Jest to dobra odpowiedz";
+					 Form2^ frm;
+					 frm = gcnew Form2(pom2);
+					 frm->ShowDialog();
+				 }
+				 else{
+					 System::String^ pom2 = textBox3->Text + ". Jest to zla odpowiedz";
+					 Form2^ frm;
+					 frm = gcnew Form2(pom2);
+					 frm->ShowDialog();
+				 }
 			 }
 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 if (textBox2->Text->IsNullOrWhiteSpace(textBox2->Text)){
 				 label5->Text = "Nic nie wpisales";
+			 }
+			 else{
+				 if (textBox1->Text == "Wis³a" || textBox1->Text == "wis³a"){
+					 System::String^ pom2 = textBox2->Text + ". Jest to dobra odpowiedz";
+					 Form2^ frm;
+					 frm = gcnew Form2(pom2);
+					 frm->ShowDialog();
+				 }
+				 else{
+					 System::String^ pom2 = textBox2->Text + ". Jest to zla odpowiedz";
+					 Form2^ frm;
+					 frm = gcnew Form2(pom2);
+					 frm->ShowDialog();
+				 }
+			 }
+}
+
+
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if (!radioButton1&&!radioButton2&&!radioButton3){
+				 label5->Text = "Nic nie zaznaczy³eœ";
+			 }
+			 if (radioButton1->Checked){
+				 System::String^ pom2 = "dobra odpowiedz";
+				 Form2^ frm;
+				 frm = gcnew Form2(pom2);
+				 frm->ShowDialog();
+			 }
+			 else{
+				 System::String^ pom2 = "zla odpowiedz";
+				 Form2^ frm;
+				 frm = gcnew Form2(pom2);
+				 frm->ShowDialog();
 			 }
 }
 };

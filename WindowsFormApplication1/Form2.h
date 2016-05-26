@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string.h>
 namespace WindowsFormApplication1 {
 
 	using namespace System;
@@ -22,7 +22,11 @@ namespace WindowsFormApplication1 {
 			//TODO: Add the constructor code here
 			//
 		}
-
+		Form2(System::String^ strTextBox)
+		{
+			InitializeComponent();
+				label1->Text = "Twoja odpowiedz to " + strTextBox;
+		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -58,7 +62,7 @@ namespace WindowsFormApplication1 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(112, 88);
+			this->label1->Location = System::Drawing::Point(34, 53);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(35, 13);
 			this->label1->TabIndex = 0;
@@ -66,18 +70,19 @@ namespace WindowsFormApplication1 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(72, 134);
+			this->button1->Location = System::Drawing::Point(37, 94);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(122, 56);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Zamknij";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form2::button1_Click);
 			// 
 			// Form2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(320, 190);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Name = L"Form2";
@@ -90,6 +95,9 @@ namespace WindowsFormApplication1 {
 #pragma endregion
 
 	private: System::Void Form2_Load(System::Object^  sender, System::EventArgs^  e) {
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+				 Close();
 	}
 	};
 }
