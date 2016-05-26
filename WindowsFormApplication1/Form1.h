@@ -315,17 +315,22 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				 label5->Text = "Nic nie wpisales";
 			 }
 			 else{
-				 if (textBox1->Text == "Warszawa" || textBox1->Text == "warszawa"){
-					 System::String^ pom2 = textBox1->Text + ". Jest to dobra odpowiedz";
-					 Form2^ frm;
-					 frm = gcnew Form2(pom2);
-					 frm->ShowDialog();
+				 try{
+					 if (textBox1->Text == "Warszawa" || textBox1->Text == "warszawa"){
+						 System::String^ pom2 = textBox1->Text + ". Jest to dobra odpowiedz";
+						 Form2^ frm;
+						 frm = gcnew Form2(pom2);
+						 frm->ShowDialog();
+					 }
+					 else{
+						 System::String^ pom2 = textBox1->Text + ". Jest to zla odpowiedz";
+						 Form2^ frm;
+						 frm = gcnew Form2(pom2);
+						 frm->ShowDialog();
+					 }
 				 }
-				 else{
-					 System::String^ pom2 = textBox1->Text + ". Jest to zla odpowiedz";
-					 Form2^ frm;
-					 frm = gcnew Form2(pom2);
-					 frm->ShowDialog();
+				 catch (Exception^ a){
+					 label5->Text = "Wpisa³eœ z³¹ wartoœæ ";
 				 }
 			 }
 }
@@ -335,18 +340,23 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 				 label5->Text = "Nie podales zadnej cyfry";
 			 }
 			 else{
-				 System::Int16 numer = System::Int16::Parse(textBox3->Text);
-				 if (numer == 966){
-					 System::String^ pom2 = textBox3->Text + ". Jest to dobra odpowiedz";
-					 Form2^ frm;
-					 frm = gcnew Form2(pom2);
-					 frm->ShowDialog();
+				 try{
+					 System::Int16 numer = System::Int16::Parse(textBox3->Text);
+					 if (numer == 966){
+						 System::String^ pom2 = textBox3->Text + ". Jest to dobra odpowiedz";
+						 Form2^ frm;
+						 frm = gcnew Form2(pom2);
+						 frm->ShowDialog();
+					 }
+					 else{
+						 System::String^ pom2 = textBox3->Text + ". Jest to zla odpowiedz";
+						 Form2^ frm;
+						 frm = gcnew Form2(pom2);
+						 frm->ShowDialog();
+					 }
 				 }
-				 else{
-					 System::String^ pom2 = textBox3->Text + ". Jest to zla odpowiedz";
-					 Form2^ frm;
-					 frm = gcnew Form2(pom2);
-					 frm->ShowDialog();
+				 catch (Exception^ a){
+					 label5->Text = "Wpisa³eœ z³¹ wartoœæ";
 				 }
 			 }
 }
@@ -355,17 +365,22 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 				 label5->Text = "Nic nie wpisales";
 			 }
 			 else{
-				 if (textBox1->Text == "Wis³a" || textBox1->Text == "wis³a"){
-					 System::String^ pom2 = textBox2->Text + ". Jest to dobra odpowiedz";
-					 Form2^ frm;
-					 frm = gcnew Form2(pom2);
-					 frm->ShowDialog();
+				 try{
+					 if (textBox1->Text == "Wis³a" || textBox1->Text == "wis³a"){
+						 System::String^ pom2 = textBox2->Text + ". Jest to dobra odpowiedz";
+						 Form2^ frm;
+						 frm = gcnew Form2(pom2);
+						 frm->ShowDialog();
+					 }
+					 else{
+						 System::String^ pom2 = textBox2->Text + ". Jest to zla odpowiedz";
+						 Form2^ frm;
+						 frm = gcnew Form2(pom2);
+						 frm->ShowDialog();
+					 }
 				 }
-				 else{
-					 System::String^ pom2 = textBox2->Text + ". Jest to zla odpowiedz";
-					 Form2^ frm;
-					 frm = gcnew Form2(pom2);
-					 frm->ShowDialog();
+				 catch (Exception^ a){
+					 label5->Text = "Wpisa³eœ z³¹ wartoœæ";
 				 }
 			 }
 }
